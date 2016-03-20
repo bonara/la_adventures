@@ -65,10 +65,12 @@ class AdventuresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_adventure
       @adventure = Adventure.find(params[:id])
+      @comments = @adventure.comments.all
+      @comment = @adventure.comments.build
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def adventure_params
-      params.require(:adventure).permit(:name, :description, :picture, :visit)
-    end
+     def adventure_params
+    params.require(:adventure).permit(:name, :description, :picture, :visit, :address)
+ end
 end
